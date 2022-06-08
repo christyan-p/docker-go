@@ -5,7 +5,7 @@ RUN apk --no-cache add upx
 RUN go build -ldflags="-s" hello.go \
     && upx --best --lzma hello 
 
-FROM alpine:3.16
+FROM scratch
 WORKDIR /app
 COPY --from=builder /app/hello .
 
